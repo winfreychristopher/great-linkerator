@@ -82,16 +82,21 @@ async function getLinksByUrl(url) {
 }
 
 //tags
-async function getLinksByTags(tags) {
+async function getLinksByTagName(tagName) {
   try {
-    const {
-      rows: [links],
-    } = await client.query(`
-     SELECT *
-     FROM links
-     WHERE tags=${tags}
-     `);
-     return links
+    const { rows: links } = await client.query(
+      `
+      SELECT links.id
+      FROM links
+      JOIN links_tags ON links.id = link_tags.link_id
+      JOIN tags ON tags.id = link_tags.tags_Id
+      WHERE tags.name=$1;
+    `,
+      [tagName]
+    );
+
+    return await Promise.all(links.map((link) => getLinkById(link.id))); 
+    
   } catch (error) {
     throw error;
   }
@@ -215,7 +220,7 @@ module.exports = {
   getTagsById,
   updateClickCount,
   getLinksByUrl,
-  getLinksByTags,
+  getLinksByTagName,
   getAllLinks,
   // db methods
 }
