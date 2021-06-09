@@ -282,7 +282,19 @@ async function getLinksByClickCount(click_count) {
   }
 }
 
+async function getAllLinks() {
+  try {
+    const { rows: links } = await client.query(`
+      SELECT id
+      FROM links
+    `)
 
+    const allLinks = await Promise.all(links.map((link) => getLinksById(post.id)))
+    return allLinks
+  } catch(error) {
+    throw error
+  }
+}
 
 
 
@@ -371,5 +383,6 @@ module.exports = {
   getLinksByClickCount,
   getLinksByUrl,
   getLinksByTags,
+  getAllLinks,
   // db methods
 }
