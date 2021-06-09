@@ -15,7 +15,7 @@ linksRouter.get("/", async (req, res, next) => {
 linksRouter.post("/", async (req, res, next) => {
     const { url, comments, date_shared, tags = [] } = req.body;
     const linkData = {};
-    console.log("Tags", tags);
+    
   
     try {
       linkData.url = url;
