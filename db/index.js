@@ -238,7 +238,22 @@ async function getLinksById(linkId) {
   }
 }
 
-//url
+const updateLinks = async ({ id, url, comment }) => {
+
+  try {
+    const { rows: [tags] } = await client.query(`
+    UPDATE tags
+    SET url = $2, comment = $3
+    WHERE id = $1
+    RETURNING *
+    `, id, url, comment);
+
+    return tags;
+
+  } catch (error) {
+      throw error;
+  }
+}
 
 async function getLinksByUrl(url) {
   try {
@@ -252,7 +267,7 @@ async function getLinksByUrl(url) {
     throw error
   }
 }
-//tags
+
 
 async function getLinksByTags(tags) {
   try {
@@ -267,7 +282,21 @@ async function getLinksByTags(tags) {
   }
 }
 
-//clickcount
+
+const updateClickCount = async (linkId) => {
+  try {
+    const {rows: links} = await client.query(`
+      UPDATE links
+      SET clicks = clicks + 1
+      WHERE id = $1;
+    `, [linkId])
+
+  } catch (error) {
+    throw error;
+  }
+
+}
+
 
 async function getLinksByClickCount(click_count) {
   try {
@@ -340,6 +369,22 @@ async function getTagsById(id) {
   }
 }
 
+const updateTags = async ({ id, name }) => {
+
+  try {
+    const { rows: [tags] } = await client.query(`
+    UPDATE tags
+    SET NAME = $2
+    WHERE id = $1
+    RETURNING *
+    `, id, name);
+
+    return tags;
+
+  } catch (error) {
+      throw error;
+  }
+}
 
 //links_Tags
 
@@ -372,6 +417,8 @@ async function addTagsToLinks(linkId, tagsList) {
 
 
 
+
+
 // export
 module.exports = {
   client,
@@ -384,5 +431,8 @@ module.exports = {
   getLinksByUrl,
   getLinksByTags,
   getAllLinks,
+  updateClickCount,
+  updateTags,
+  updateLinks
   // db methods
 }
