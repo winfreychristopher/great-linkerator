@@ -91,21 +91,21 @@ async function getLinksByTags(tags) {
      FROM links
      WHERE tags=${tags}
      `);
+     return links
   } catch (error) {
     throw error;
   }
 }
 
 //clickcount
-async function getLinksByClickCount(click_count) {
+const updateClickCount = async (linkId) => {
   try {
-    const {
-      rows: [links],
-    } = await client.query(`
-    SELECT *
-    FROM links
-    WHERE tags=${click_count}
-    `);
+    const {rows: links} = await client.query(`
+      UPDATE links
+      SET clicks = clicks + 1
+      WHERE id = $1;
+    `, [linkId])
+
   } catch (error) {
     throw error;
   }
@@ -169,35 +169,6 @@ async function addTagsToLinks(linkId, tagList) {
   }
 }
 
-//links
-
-
-
-
-
-
-//url
-
-
-//tags
-
-
-
-//clickcount
-
-async function getLinksByClickCount(click_count) {
-  try {
-    const { rows: [links] } = await client.query(`
-    SELECT *
-    FROM links
-    WHERE click_count=${click_count}
-    `)
-    return links
-  } catch(error) {
-    throw error
-  }
-}
-
 async function getAllLinks() {
   try {
     const { rows: links } = await client.query(`
@@ -242,7 +213,7 @@ module.exports = {
   createLinkTags,
   getLinksById,
   getTagsById,
-  getLinksByClickCount,
+  updateClickCount,
   getLinksByUrl,
   getLinksByTags,
   getAllLinks,
