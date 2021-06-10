@@ -88,14 +88,14 @@ async function getLinksByTagName(tagName) {
       `
       SELECT links.id
       FROM links
-      JOIN links_tags ON links.id = link_tags.link_id
-      JOIN tags ON tags.id = link_tags.tags_Id
+      JOIN link_tags ON links.id=link_tags."linkId"
+      JOIN tags ON tags.id=link_tags."tagsId"
       WHERE tags.name=$1;
     `,
       [tagName]
     );
 
-    return await Promise.all(links.map((link) => getLinkById(link.id))); 
+    return await Promise.all(links.map((link) => getLinksById(link.id))); 
     
   } catch (error) {
     throw error;
