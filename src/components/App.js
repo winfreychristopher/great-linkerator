@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Links from './links'
 
 import {
   getSomething
@@ -19,8 +20,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Hello, World!</h1>
-      <h2>{ message }</h2>
+        <Links />
     </div>
   );
 }
