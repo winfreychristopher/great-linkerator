@@ -11,6 +11,7 @@ export async function fetchAllLinks() {
   }
 }
 
+
 export async function fetchLinksByTag(tag) {
   try {
     const { data } = await axios.get(`/api/tags/${tag}/links`);

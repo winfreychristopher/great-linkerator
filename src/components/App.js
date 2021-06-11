@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 
 import { fetchAllLinks } from "../api";
@@ -6,6 +7,7 @@ import LinkModal from "./LinkModal";
 import SearchResults from "./SearchResults";
 
 import "./index.css";
+
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -24,6 +26,7 @@ const App = () => {
   });
 
   return (
+
     <>
       <div className="App">
         <h1>The Great Linkerator</h1>
@@ -38,6 +41,7 @@ const App = () => {
         </LinkModal>
       </div>
     </>
+
   );
 };
 
