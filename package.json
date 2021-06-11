@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
+    "http-proxy-middleware": "^0.19.1",
     "morgan": "^1.10.0",
     "pg": "^8.2.1",
     "react": "^16.13.1",
@@ -27,7 +28,6 @@
   "devDependencies": {
     "nodemon": "^2.0.4"
   },
-  "proxy": "http://localhost:5000",
   "browserslist": {
     "production": [
       ">0.2%",

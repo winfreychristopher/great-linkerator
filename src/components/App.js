@@ -4,6 +4,7 @@ import Links from './links'
 import {
   getSomething
 } from '../api';
+import CreateLinks from './addLink';
 
 const App = () => {
   const [message, setMessage] = useState('');
@@ -20,6 +21,10 @@ const App = () => {
 
   return (
     <div className="App">
+        <div>
+          <CreateLinks />
+        </div>
+
         <Links />
     </div>
   );

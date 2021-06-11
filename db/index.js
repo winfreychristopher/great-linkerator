@@ -14,6 +14,7 @@ async function createLinks({
   tags = [],
 }) {
   try {
+    
     const {
       rows: [links],
     } = await client.query(
@@ -121,7 +122,7 @@ async function createTags(tagsList) {
   if (tagsList.length === 0) {
     return;
   }
-  console.log("CREATE TAGS");
+  console.log(tagsList, "CREATE TAGS");
   const insertValues = tagsList.map((_, index) => `$${index + 1}`).join("), (");
   const selectValues = tagsList.map((_, index) => `$${index + 1}`).join(", ");
   try {
@@ -162,7 +163,7 @@ async function createLinkTags(linkId, tagId) {
   }
 }
 
-async function addTagsToLinks(linkId, tagList) {
+async function addTagsToLinks(linkId, tagList = []) {
   try {
     const createLinkTagPromises = tagList.map((tag) =>
       createLinkTags(linkId, tag.id)

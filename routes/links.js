@@ -13,17 +13,19 @@ linksRouter.get("/", async (req, res, next) => {
 })
 
 linksRouter.post("/", async (req, res, next) => {
-    const { url, comments, date_shared, tags = [] } = req.body;
+    const { url, comment, date_shared, tags = [] } = req.body;
     const linkData = {};
     
   
     try {
       linkData.url = url;
-      linkData.comments = comments;
-      linkData.date = date_shared;
+      linkData.comment = comment;
+      linkData.date_shared = date_shared;
       linkData.tags = tags;
-  
+      console.log(linkData,"AHHHHHHHHHHHHHHHHHHHHH")
       const links = await createLinks(linkData);
+      
+      console.log(links, "!!!!!!!!!!!!!!!!")
       res.send(links);
     } catch (error) {
       throw error;
