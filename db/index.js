@@ -1,7 +1,7 @@
 // Connect to DB
-const { Client } = require('pg');
-const DB_NAME = 'localhost:5432/linkerator-dev'
-const DB_URL = process.env.DATABASE_URL || `postgres://${ DB_NAME }`;
+const { Client } = require("pg");
+const DB_NAME = "localhost:5432/linkerator-dev";
+const DB_URL = process.env.DATABASE_URL || `postgres://${DB_NAME}`;
 const client = new Client(DB_URL);
 
 // database methods
@@ -88,15 +88,13 @@ async function getLinksByTagName(tagName) {
       `
       SELECT links.id
       FROM links
-      JOIN links_tags ON links.id = link_tags.link_id
-      JOIN tags ON tags.id = link_tags.tags_Id
+      JOIN link_tags ON links.id=link_tags."linkId"
+      JOIN tags ON tags.id=link_tags."tagsId"
       WHERE tags.name=$1;
     `,
       [tagName]
     );
-
-    return await Promise.all(links.map((link) => getLinkById(link.id))); 
-    
+    return await Promise.all(links.map((link) => getLinksById(link.id)));
   } catch (error) {
     throw error;
   }
@@ -105,16 +103,18 @@ async function getLinksByTagName(tagName) {
 //clickcount
 const updateClickCount = async (linkId) => {
   try {
-    const {rows: links} = await client.query(`
+    const { rows: links } = await client.query(
+      `
       UPDATE links
       SET clicks = clicks + 1
       WHERE id = $1;
-    `, [linkId])
-
+    `,
+      [linkId]
+    );
   } catch (error) {
     throw error;
   }
-}
+};
 
 //tags
 async function createTags(tagsList) {
@@ -143,8 +143,6 @@ async function createTags(tagsList) {
     throw error;
   }
 }
-
-
 
 //links_Tags
 async function createLinkTags(linkId, tagId) {
@@ -179,36 +177,33 @@ async function getAllLinks() {
     const { rows: links } = await client.query(`
       SELECT id
       FROM links
-    `)
+    `);
 
-    const allLinks = await Promise.all(links.map((link) => getLinksById(link.id)))
-    return allLinks
-  } catch(error) {
-    throw error
-  }
-}
-
-
-
-//tags
-
-
-
-async function getTagsById(id) {
-  try {
-    const { rows: [tags] } = await client.query(`
-      SELECT *
-      FROM tags
-      WHERE id=${id}
-    `)
-    return tags;
+    const allLinks = await Promise.all(
+      links.map((link) => getLinksById(link.id))
+    );
+    return allLinks;
   } catch (error) {
     throw error;
   }
 }
 
+//tags
 
-
+async function getTagsById(id) {
+  try {
+    const {
+      rows: [tags],
+    } = await client.query(`
+      SELECT *
+      FROM tags
+      WHERE id=${id}
+    `);
+    return tags;
+  } catch (error) {
+    throw error;
+  }
+}
 
 // export
 module.exports = {
@@ -223,4 +218,4 @@ module.exports = {
   getLinksByTagName,
   getAllLinks,
   // db methods
-}
+};
