@@ -105,7 +105,7 @@ async function getLinksByTagName(tagName) {
 //clickcount
 const updateClickCount = async (linkId) => {
   try {
-    const { rows: links } = await client.query(
+    const { rows } = await client.query(
       `
       UPDATE links
       SET click_count = click_count + 1
@@ -113,7 +113,7 @@ const updateClickCount = async (linkId) => {
     `,
       [linkId]
     );
-    console.log(links, "These are clicks")
+   
   } catch (error) {
     throw error;
   }

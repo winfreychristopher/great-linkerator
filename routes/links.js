@@ -13,7 +13,7 @@ linksRouter.get("/", async (req, res, next) => {
 })
 
 linksRouter.post("/", async (req, res, next) => {
-    const { url, comment, date_shared, tags = [] } = req.body;
+    const { url, comment, date_shared, click_count, tags = [] } = req.body;
     const linkData = {};
     
   
@@ -21,6 +21,7 @@ linksRouter.post("/", async (req, res, next) => {
       linkData.url = url;
       linkData.comment = comment;
       linkData.date_shared = date_shared;
+      linkData.click_count = click_count
       linkData.tags = tags;
       console.log(linkData,"AHHHHHHHHHHHHHHHHHHHHH")
       const links = await createLinks(linkData);
@@ -66,18 +67,20 @@ linksRouter.patch("/:linkId", async (req, res, next) => {
 
 //update clicks
 // need to target the id of the link to update the clicks
-linksRouter.patch("/:linkId/clicks", async (req, res, next) => {
-    const { id } = req.params
-    const {click_counter} = req.body
+linksRouter.patch("/:id/clicks", async (req, res, next) => {
+  const {id} = req.params;
 
-    try {
-      console.log(updateClickCount(id),"!!!!!!!!!!!!!!!!")
-        await updateClickCount(id, click_counter)
-        res.send({message: 'Click added' })
-    } catch(error) {
-        throw error
-    }
-})
+  try {
+    await updateClickCount(id);
+    res.send({
+      message: 'added a click'
+    })
+  } catch (error) {
+    throw error;
+  }
+
+});
+
 
 
 module.exports = linksRouter

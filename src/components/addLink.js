@@ -7,6 +7,7 @@ const CreateLinks = () => {
     const [tags, setTags] = useState()
     const [date, setDate] = useState()
     const [comment, setComment] = useState()
+    const [click_count, setClick_Count] = useState(0)
 
 
     const createLinksApi = async () => {
@@ -22,6 +23,7 @@ const CreateLinks = () => {
                 tags: [tags],
                 date_shared: date,
                 comment: comment,
+                click_count: click_count
             } 
             )
             .then((response) => {
@@ -36,6 +38,7 @@ const CreateLinks = () => {
     const onSubmit = (event) => {
         event.preventDefault()
         setTags([])
+        setClick_Count(0)
         createLinksApi()
     }
     return (

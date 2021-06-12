@@ -22,14 +22,9 @@ export async function fetchLinksByTag(tag) {
   }
 }
 
-export async function updateClicker(id, click_count) {
+export async function updateClicker(id) {
   try {
-    return await axios.patch(`/api/links/${id}/clicks`,{
-      click_count: click_count
-    },
-     {
-
-    },
+    return await axios.patch(`/api/links/${id}/clicks`,
      {
       header: {
               'Content-Type': 'application/json'
@@ -37,7 +32,7 @@ export async function updateClicker(id, click_count) {
     },
     )
     .then((response) => {
-      console.log(response,"!!!!!!!!!!!!!!!!!!");
+      console.log(response);
     }, (error) => {
       console.log(error);
     });
