@@ -21,3 +21,22 @@ export async function fetchLinksByTag(tag) {
     throw error;
   }
 }
+
+export async function updateClicker(id) {
+  try {
+    return await axios.patch(`/api/links/${id}/clicks`,
+     {
+      header: {
+              'Content-Type': 'application/json'
+            }, 
+    },
+    )
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+  } catch(error) {
+    console.error(error)
+  }
+}

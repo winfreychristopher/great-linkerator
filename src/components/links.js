@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { getLinks } from "../api";
+import { fetchAllLinks } from "../api";
+import {updateClicker} from '../api'
 
 
 const Links = () => {
     const [links, setLinks] = useState([])
 
     useEffect(() => {
-        getLinks()
+        fetchAllLinks()
           .then((links) => {
             setLinks(links);
           })
@@ -15,20 +16,9 @@ const Links = () => {
           });
       }, [setLinks]);
 
-      // const updateClicker = async (id) => {
-      //   const [clicks, setClicks] = useState('')
-      //   return fetch(`/api/links/${id}/clicks`, {
-      //     method: "PATCH",
-      //     header: {
-      //       'Content-Type': 'application/json'
-      //     },
-      //     body: JSON.stringify({
-      //       click_count: clicks
-      //     }),
-      //   })
-      //   //patch click count, return 
+      
 
-      // }
+      
 
       return (
 
@@ -52,7 +42,7 @@ const createLinkHTML = (link) => {
   return (
     <div >
       <div >
-        <b>Url:</b><a href='true'>{link.url}</a>
+        <b>Url:</b><a href='true' onClick={(event) => {event.preventDefault(); updateClicker(link.id, link.click_count); console.log(link)}} >{link.url}</a>
       </div>
       <div >
         <b>Tags:</b> {link.tags.map(({id, name}) => (<a href='true' key={id}>{name}</a> ))}
@@ -70,5 +60,4 @@ const createLinkHTML = (link) => {
   );
 };
 
-
-  export default Links
+export default Links

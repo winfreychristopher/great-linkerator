@@ -4,29 +4,13 @@ import React, {useState} from 'react'
 
 const CreateLinks = () => {
     const [url, setUrl] = useState()
-    const [tags, setTags] = useState([])
+    const [tags, setTags] = useState()
     const [date, setDate] = useState()
     const [comment, setComment] = useState()
+    const [click_count, setClick_Count] = useState(0)
 
 
     const createLinksApi = async () => {
-        // return await fetch(`/api/links`, {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body:JSON.stringify({
-        //         url: url,
-        //         tags: tags,
-        //         date_shared: date,
-        //         comment: comment
-        //     }),
-        // })
-        // .then((response) => response.json())
-        // .then((results) => {
-        //     console.log(results)
-        // })
-        // .catch(console.error)
         try {
             console.log({
                 url: url,
@@ -39,6 +23,7 @@ const CreateLinks = () => {
                 tags: [tags],
                 date_shared: date,
                 comment: comment,
+                click_count: click_count
             } 
             )
             .then((response) => {
@@ -52,6 +37,8 @@ const CreateLinks = () => {
     }
     const onSubmit = (event) => {
         event.preventDefault()
+        setTags([])
+        setClick_Count(0)
         createLinksApi()
     }
     return (
