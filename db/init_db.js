@@ -21,7 +21,7 @@ async function buildTables() {
       CREATE TABLE links(
         id SERIAL PRIMARY KEY,
         url VARCHAR(255) UNIQUE NOT NULL,
-        click_count INTEGER,
+        click_count,
         date_shared VARCHAR(255) NOT NULL,
         comment TEXT NOT NULL
       );

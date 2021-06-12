@@ -5,8 +5,10 @@ import { fetchAllLinks } from "../api";
 import SearchBar from "./SearchBar";
 import LinkModal from "./LinkModal";
 import SearchResults from "./SearchResults";
+import Links from './links'
 
 import "./index.css";
+import CreateLinks from "./addLink";
 
 
 const App = () => {
@@ -37,8 +39,9 @@ const App = () => {
       <div className="modal-container">
         <button onClick={() => setIsOpen(true)}>Create Link</button>
         <LinkModal open={isOpen} onClose={() => setIsOpen(false)}>
-          Test
+          <CreateLinks />
         </LinkModal>
+        <Links />
       </div>
     </>
 

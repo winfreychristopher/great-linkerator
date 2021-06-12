@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllLinks, createLinks } = require("../db");
+const { getAllLinks, createLinks, updateClickCount } = require("../db");
 const linksRouter = express.Router();
 
 
@@ -36,22 +36,25 @@ linksRouter.post("/", async (req, res, next) => {
 //update links
 
 linksRouter.patch("/:linkId", async (req, res, next) => {
-    const { url, comments } = req.body;
+    const { url, comment, tags = [] } = req.body;
     const { id } = req.params;
     const linkData = {};
   
     if (url) {
       linkData.url = url;
     }
-    if (comments) {
-      linkData.comments = comments;
+    if (comment) {
+      linkData.comment = comment;
+    }
+    if (tags && tags.length > 0) {
+      linkData.tags = tags.trim().split(/\s+/)
     }
   
     try {
       const updatedLinks = await updateLinks({
         id: id,
         url: linkData.url,
-        comments: linkData.comments,
+        comments: linkData.comment,
       });
       res.send({
         message: 'Link has successfully been updated!',  
@@ -64,11 +67,13 @@ linksRouter.patch("/:linkId", async (req, res, next) => {
 //update clicks
 // need to target the id of the link to update the clicks
 linksRouter.patch("/:linkId/clicks", async (req, res, next) => {
-    const {id} = req.params
+    const { id } = req.params
+    const {click_counter} = req.body
 
     try {
-        await updateClickCount(id)
-        res.send({message: 'Click added'})
+      console.log(updateClickCount(id),"!!!!!!!!!!!!!!!!")
+        await updateClickCount(id, click_counter)
+        res.send({message: 'Click added' })
     } catch(error) {
         throw error
     }

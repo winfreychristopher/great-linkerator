@@ -108,11 +108,12 @@ const updateClickCount = async (linkId) => {
     const { rows: links } = await client.query(
       `
       UPDATE links
-      SET clicks = clicks + 1
+      SET click_count = click_count + 1
       WHERE id = $1;
     `,
       [linkId]
     );
+    console.log(links, "These are clicks")
   } catch (error) {
     throw error;
   }
