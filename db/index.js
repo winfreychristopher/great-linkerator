@@ -32,6 +32,22 @@ async function createLinks({
   }
 }
 
+const updateLinks = async ({ id, url, comment = [] }) => {
+
+  try {
+      const {rows: links} = await client.query(`
+          UPDATE links
+          SET url = $2, comment = $3
+          WHERE id = $1
+          RETURNING *
+      `, [id, url, comment]);
+      console.log(links, "THIS IS UPDATED LINKSSSSSSSSSSSSSSSSSSSSS")
+      return links;
+  } catch (error) {
+      throw error;
+  }
+}
+
 async function getLinksById(linkId) {
   try {
     const {
@@ -70,12 +86,15 @@ async function getLinksById(linkId) {
 async function getLinksByUrl(url) {
   try {
     const {
-      rows: [links],
+      rows: links,
     } = await client.query(`
     SELECT *
     FROM links
-    WHERE url=${url}
-    `);
+    WHERE url LIKE $1
+    `, [`%${url}%`]);
+    console.log(
+      links, '!!!!!!!!!!!!!!!!!!!!!!'
+    )
     return links;
   } catch (error) {
     throw error;
@@ -220,5 +239,6 @@ module.exports = {
   getLinksByUrl,
   getLinksByTagName,
   getAllLinks,
+  updateLinks
   // db methods
 };

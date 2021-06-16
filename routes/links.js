@@ -1,12 +1,20 @@
 const express = require("express");
-const { getAllLinks, createLinks, updateClickCount } = require("../db");
+const { getAllLinks, createLinks, updateClickCount, client, getLinksByUrl } = require("../db");
 const linksRouter = express.Router();
 
 
 linksRouter.get("/", async (req, res, next) => {
+  console.log(req.query.url, "Empty Object?")
     try {
-        const links = await getAllLinks()
-        res.send(links)
+      let links
+      if 
+      (req.query.url) {
+        links = await getLinksByUrl(req.query.url)
+        console.log(links)
+      } else {
+        links = await getAllLinks()
+      }
+      res.send(links)
     } catch(error) {
         throw error
     }
@@ -32,7 +40,7 @@ linksRouter.post("/", async (req, res, next) => {
       throw error;
     }
   });
-  
+
 
 //update links
 
@@ -55,8 +63,9 @@ linksRouter.patch("/:linkId", async (req, res, next) => {
       const updatedLinks = await updateLinks({
         id: id,
         url: linkData.url,
-        comments: linkData.comment,
+        comment: linkData.comment,
       });
+      console.log(updatedLinks, 'These are the updated links')
       res.send({
         message: 'Link has successfully been updated!',  
         data: updatedLinks});
