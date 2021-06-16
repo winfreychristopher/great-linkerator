@@ -5,7 +5,7 @@ const LinkCard = ({ url, date_shared, click_count, comment, tags = [] }) => {
     <div className="link-card">
       <div className="info">
         <p className="link-url">
-          <a href="true">{url}</a> <br />
+          <a href="true">{url.toUpperCase()}</a> <br />
         </p>
         <p className="link-data">
           Date Shared:
@@ -21,7 +21,6 @@ const LinkCard = ({ url, date_shared, click_count, comment, tags = [] }) => {
           {comment} <br />
         </p>
         <p className="link-tag">
-          tags:
           {tags.map((tag) => (
             <span key={tag.id}>{tag.name}</span>
           ))}

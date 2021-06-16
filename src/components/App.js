@@ -1,13 +1,14 @@
-
 import React, { useState, useEffect } from "react";
 
 import { fetchAllLinks } from "../api";
 import SearchBar from "./SearchBar";
 import LinkModal from "./LinkModal";
 import SearchResults from "./SearchResults";
+import CreateLinks from "./addLink";
 
 import "./index.css";
 
+import linkIcon from "../Icon/Link.png";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -26,10 +27,12 @@ const App = () => {
   });
 
   return (
-
     <>
       <div className="App">
-        <h1>The Great Linkerator</h1>
+        <div className="title-container">
+          <img className="Icon" src={linkIcon} alt={""} />
+          <h1 className="title">The Great Linkerator</h1>
+        </div>
         <h2>{message}</h2>
         <SearchBar setResults={setResults} />
         <SearchResults results={results} />
@@ -37,11 +40,10 @@ const App = () => {
       <div className="modal-container">
         <button onClick={() => setIsOpen(true)}>Create Link</button>
         <LinkModal open={isOpen} onClose={() => setIsOpen(false)}>
-          Test
+          <CreateLinks />
         </LinkModal>
       </div>
     </>
-
   );
 };
 
