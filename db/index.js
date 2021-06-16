@@ -86,12 +86,15 @@ async function getLinksById(linkId) {
 async function getLinksByUrl(url) {
   try {
     const {
-      rows: [links],
+      rows: links,
     } = await client.query(`
     SELECT *
     FROM links
-    WHERE url=${url}
-    `);
+    WHERE url LIKE $1
+    `, [`%${url}%`]);
+    console.log(
+      links, '!!!!!!!!!!!!!!!!!!!!!!'
+    )
     return links;
   } catch (error) {
     throw error;

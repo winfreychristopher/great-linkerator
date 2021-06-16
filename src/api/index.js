@@ -11,6 +11,15 @@ export async function fetchAllLinks() {
   }
 }
 
+export async function fetchLinksByUrl(url) {
+  try {
+    const { data } = await axios.get(`/api/links`, { params: { url }});
+    console.log(data, "THIS IS Links_Url");
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export async function fetchLinksByTag(tag) {
   try {

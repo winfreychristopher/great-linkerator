@@ -9,7 +9,6 @@ import Links from './links'
 
 import "./index.css";
 import CreateLinks from "./addLink";
-import UpdateComments from "./addComment";
 
 
 const App = () => {

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllLinks } from "../api";
 import { updateClicker } from "../api";
-import LinkModal from "./LinkModal";
-import UpdateComments from "./addComment";
+
 
 const Links = () => {
   const [links, setLinks] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     fetchAllLinks()
