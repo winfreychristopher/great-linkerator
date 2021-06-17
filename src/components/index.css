@@ -20,7 +20,7 @@
 
 body {
   margin: 0;
-  background-color: #2a323d;
+  background-color: #212021;
   color: white;
   font-family: "Exo 2";
 }
@@ -44,15 +44,39 @@ body {
 }
 
 .link-card {
-  background: #97b9da;
+  background: #fad7c5;
   padding: 10px;
   box-shadow: 5px 5px 5px black;
   font-family: Bebas Neue;
   border-radius: 5px;
   color: black;
   font-family: "Exo 2";
+  margin-bottom: 20px;
+  width: max-content;
 }
 .link-modal {
   background-color: #424a5c;
   color: #16abe6;
+}
+#link-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(250px, auto);
+  gap: 15px;
+  background: #212021;
+  padding: 10px;
+  align-items: center;
+  justify-items: center;
+}
+.link-data > span {
+  font-weight: bold;
+}
+.link-tag > span:first-of-type {
+  font-weight: bold;
+}
+.link-url > span {
+  font-weight: bold;
+}
+.tag-list {
+  border: 2px solid black;
 }
