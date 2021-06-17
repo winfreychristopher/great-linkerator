@@ -4,7 +4,6 @@ const linksRouter = express.Router();
 
 
 linksRouter.get("/", async (req, res, next) => {
-  console.log(req.query.url, "Empty Object?")
     try {
       let links
       if 
@@ -31,7 +30,6 @@ linksRouter.post("/", async (req, res, next) => {
       linkData.date_shared = date_shared;
       linkData.click_count = click_count
       linkData.tags = tags;
-      console.log(linkData,"AHHHHHHHHHHHHHHHHHHHHH")
       const links = await createLinks(linkData);
       
       console.log(links, "!!!!!!!!!!!!!!!!")

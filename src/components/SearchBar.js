@@ -26,6 +26,7 @@ const SearchBar = ({ setResults }) => {
     const urls = await fetchLinksByUrl(urlText);
     setResults(urls);
   }
+
   return (
     <>
       <div id="search-container">
