@@ -2,6 +2,7 @@ import React from "react";
 import LinkCard from "./LinkCard";
 
 const SearchResults = ({ results }) => {
+  console.log(results, 'THIS IS RESULTS')
   return (
     <div id="results">
       <h3>Found {results.length} link(s):</h3>

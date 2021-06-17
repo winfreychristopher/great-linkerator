@@ -4,9 +4,11 @@ import { fetchAllLinks } from "../api";
 import SearchBar from "./SearchBar";
 import LinkModal from "./LinkModal";
 import SearchResults from "./SearchResults";
-import CreateLinks from "./addLink";
+import Links from './links'
+
 
 import "./index.css";
+import CreateLinks from "./addLink";
 
 import linkIcon from "../Icon/Link.png";
 
@@ -42,6 +44,7 @@ const App = () => {
         <LinkModal open={isOpen} onClose={() => setIsOpen(false)}>
           <CreateLinks />
         </LinkModal>
+        <Links />
       </div>
     </>
   );

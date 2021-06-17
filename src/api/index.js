@@ -11,6 +11,15 @@ export async function fetchAllLinks() {
   }
 }
 
+export async function fetchLinksByUrl(url) {
+  try {
+    const { data } = await axios.get(`/api/links`, { params: { url }});
+    console.log(data, "THIS IS Links_Url");
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export async function fetchLinksByTag(tag) {
   try {
@@ -19,5 +28,24 @@ export async function fetchLinksByTag(tag) {
     return data;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function updateClicker(id) {
+  try {
+    return await axios.patch(`/api/links/${id}/clicks`,
+     {
+      header: {
+              'Content-Type': 'application/json'
+            }, 
+    },
+    )
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+  } catch(error) {
+    console.error(error)
   }
 }
