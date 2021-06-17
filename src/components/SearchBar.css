@@ -3,5 +3,25 @@
   padding: 10px;
   border-radius: 9px;
   margin-bottom: 8px;
-  width: 50%;
+  width: 55vw;
+  margin: 0px 10px 0px 10px;
+}
+
+#search-container {
+  background-color: #486fab;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  transform: translateY(-14px);
+}
+
+.search-btn {
+  box-sizing: border-box;
+  background-color: #76c2da;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-family: "Exo 2";
 }

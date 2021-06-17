@@ -26,24 +26,29 @@ const SearchBar = ({ setResults }) => {
     const urls = await fetchLinksByUrl(urlText)
     setResults(urls)
   }
-  return (
+  return (   
+
   <>
-    <div id="search">
+    <div id="search-container">
       <h3>Look up links here...</h3>
       <form onSubmit={handleSubmit}>
         <input
+          id="search"
           type="text"
           placeholder="Search links.."
           value={text}
           onChange={handleTextChange}
         />
-        <button type="submit">Search</button>
+        <button className="search-btn" type="submit">
+          Search
+        </button>
       </form>
     </div>
-    <div id="search">
+    <div>
       <h3>Look up Urls here...</h3>
       <form onSubmit={handleSubmit2}>
         <input
+          id="search"
           type="text"
           placeholder="Search Urls.."
           value={urlText}

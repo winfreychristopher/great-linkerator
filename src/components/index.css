@@ -17,3 +17,42 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 }
+
+body {
+  margin: 0;
+  background-color: #2a323d;
+  color: white;
+  font-family: "Exo 2";
+}
+
+.title-container {
+  background-color: #fffaf5;
+  width: 100vw;
+  box-shadow: 5px 5px 5px black;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px 10px 0px;
+}
+
+.title {
+  text-align: center;
+  color: black;
+  font-family: "Orbitron";
+  padding: 10px;
+  margin: 0;
+  font-size: 30px;
+}
+
+.link-card {
+  background: #97b9da;
+  padding: 10px;
+  box-shadow: 5px 5px 5px black;
+  font-family: Bebas Neue;
+  border-radius: 5px;
+  color: black;
+  font-family: "Exo 2";
+}
+.link-modal {
+  background-color: #424a5c;
+  color: #16abe6;
+}

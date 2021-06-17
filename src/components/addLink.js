@@ -1,6 +1,5 @@
-import axios from 'axios'
-import React, {useState} from 'react'
-
+import axios from "axios";
+import React, { useState } from "react";
 
 const CreateLinks = () => {
     const [url, setUrl] = useState()
@@ -97,4 +96,4 @@ const CreateLinks = () => {
     )
 }
 
-export default CreateLinks
+export default CreateLinks;

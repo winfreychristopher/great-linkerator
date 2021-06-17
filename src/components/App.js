@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 
 import { fetchAllLinks } from "../api";
@@ -7,9 +6,11 @@ import LinkModal from "./LinkModal";
 import SearchResults from "./SearchResults";
 import Links from './links'
 
+
 import "./index.css";
 import CreateLinks from "./addLink";
 
+import linkIcon from "../Icon/Link.png";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -28,10 +29,12 @@ const App = () => {
   });
 
   return (
-
     <>
       <div className="App">
-        <h1>The Great Linkerator</h1>
+        <div className="title-container">
+          <img className="Icon" src={linkIcon} alt={""} />
+          <h1 className="title">The Great Linkerator</h1>
+        </div>
         <h2>{message}</h2>
         <SearchBar setResults={setResults} />
         <SearchResults results={results} />
@@ -44,7 +47,6 @@ const App = () => {
         <Links />
       </div>
     </>
-
   );
 };
 
