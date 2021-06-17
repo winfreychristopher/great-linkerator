@@ -82,7 +82,6 @@ async function getLinksById(linkId) {
   }
 }
 
-//url
 async function getLinksByUrl(url) {
   try {
     const {
@@ -92,9 +91,6 @@ async function getLinksByUrl(url) {
     FROM links
     WHERE url LIKE $1
     `, [`%${url}%`]);
-    console.log(
-      links, '!!!!!!!!!!!!!!!!!!!!!!'
-    )
     return links;
   } catch (error) {
     throw error;

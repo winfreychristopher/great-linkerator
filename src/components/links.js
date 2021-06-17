@@ -36,9 +36,9 @@ const createLinkHTML = (link) => {
         <b>Url:</b>
         <a
           href="true"
-          onClick={(event) => {
-            event.preventDefault();
+          onClick={() => {
             updateClicker(link.id, link.click_count);
+            window.open(link.url)
           }}
         >
           {link.url}
