@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { fetchAllLinks } from "../api";
 import { updateClicker } from "../api";
 
-
 const Links = () => {
   const [links, setLinks] = useState([]);
 
@@ -18,7 +17,7 @@ const Links = () => {
 
   return (
     <>
-      <div>
+      <div id="link-container">
         {links.map((link) => (
           <div key={link.id}>
             <div>{createLinkHTML(link)}</div>
@@ -31,7 +30,7 @@ const Links = () => {
 
 const createLinkHTML = (link) => {
   return (
-    <div>
+    <div className="link-card">
       <div>
         <b>Url:</b>
         <a
