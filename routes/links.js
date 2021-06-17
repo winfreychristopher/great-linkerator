@@ -9,7 +9,6 @@ linksRouter.get("/", async (req, res, next) => {
       if 
       (req.query.url) {
         links = await getLinksByUrl(req.query.url)
-        console.log(links)
       } else {
         links = await getAllLinks()
       }
