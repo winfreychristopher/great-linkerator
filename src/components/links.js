@@ -15,6 +15,11 @@ const Links = () => {
       });
   }, [setLinks]);
 
+  const handleClick = (event) => {
+    event.preventDefault();
+
+  }
+
   return (
     <>
       <div id="link-container">
@@ -46,7 +51,9 @@ const createLinkHTML = (link) => {
       <div>
         <b>Tags:</b>{" "}
         {link.tags.map(({ id, name }) => (
-          <a href="true" key={id}>
+          <a href="true" key={id} onClick={() => {
+            
+          }}>
             {name}
           </a>
         ))}

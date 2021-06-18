@@ -30,8 +30,7 @@ linksRouter.post("/", async (req, res, next) => {
       linkData.click_count = click_count
       linkData.tags = tags;
       const links = await createLinks(linkData);
-      
-      console.log(links, "!!!!!!!!!!!!!!!!")
+    
       res.send(links);
     } catch (error) {
       throw error;
