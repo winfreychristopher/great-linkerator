@@ -44,7 +44,7 @@ body {
 }
 
 .link-card {
-  background: #fad7c5;
+  background: #fff8f5;
   padding: 10px;
   box-shadow: 5px 5px 5px black;
   font-family: Bebas Neue;
@@ -68,6 +68,9 @@ body {
   align-items: center;
   justify-items: center;
 }
+.link-data {
+  background-color: #f2dcd1;
+}
 .link-data > span {
   font-weight: bold;
 }
@@ -77,6 +80,18 @@ body {
 .link-url > span {
   font-weight: bold;
 }
+
+.link-url {
+  background-color: #f2dcd1;
+  margin: 0;
+}
 .tag-list {
   border: 2px solid black;
+}
+.Link-list {
+  padding: 10px;
+}
+
+#results > h3 {
+  padding: 10px;
 }
