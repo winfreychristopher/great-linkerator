@@ -61,7 +61,6 @@ linksRouter.patch("/:linkId", async (req, res, next) => {
         url: linkData.url,
         comment: linkData.comment,
       });
-      console.log(updatedLinks, 'These are the updated links')
       res.send({
         message: 'Link has successfully been updated!',  
         data: updatedLinks});

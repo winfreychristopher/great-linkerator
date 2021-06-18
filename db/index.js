@@ -41,7 +41,6 @@ const updateLinks = async ({ id, url, comment = [] }) => {
           WHERE id = $1
           RETURNING *
       `, [id, url, comment]);
-      console.log(links, "THIS IS UPDATED LINKSSSSSSSSSSSSSSSSSSSSS")
       return links;
   } catch (error) {
       throw error;
@@ -155,7 +154,6 @@ async function createTags(tagsList) {
       IN (${selectValues});`,
       tagsList
     );
-    console.log(rows, "THIS IS ROWS");
     return rows;
   } catch (error) {
     throw error;

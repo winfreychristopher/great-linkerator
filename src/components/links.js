@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchAllLinks } from "../api";
 import { updateClicker } from "../api";
 
-const Links = () => {
+const Links = ({results, setResults}) => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {

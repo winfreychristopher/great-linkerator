@@ -17,6 +17,7 @@ const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState([]);
 
+
   useEffect(() => {
     fetchAllLinks()
       .then((response) => {
@@ -37,14 +38,14 @@ const App = () => {
         </div>
         <h2>{message}</h2>
         <SearchBar results={results} setResults={setResults} />
-        <SearchResults results={results} />
+        <SearchResults results={results} setResults={setResults} />
       </div>
       <div className="modal-container">
         <button onClick={() => setIsOpen(true)}>Create Link</button>
         <LinkModal open={isOpen} onClose={() => setIsOpen(false)}>
           <CreateLinks />
         </LinkModal>
-        <Links />
+        <Links results={results} setResults={setResults}/>
       </div>
     </>
   );
