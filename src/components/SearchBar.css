@@ -29,8 +29,8 @@
 .search-btn {
   grid-column-start: 5;
   box-sizing: border-box;
-  background-color: #e55137;
-  color: white;
+  background-color: #d0f2f0;
+  color: #586665;
   padding: 16px 20px;
   margin: 8px 0;
   border: none;
