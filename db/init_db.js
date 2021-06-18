@@ -48,14 +48,14 @@ async function populateInitialData() {
     const linksToCreate = [
       {
         url: "https://www.google.com/",
-        click_count: 1000000,
+        click_count: 0,
         comment: "This website is pretty popular...",
         date_shared: "June 8, 2021",
         tags: ["google", "search"],
       },
       {
         url: "https://www.ign.com/",
-        click_count: 50000,
+        click_count: 0,
         comment: "Can't spell ignorance without IGN",
         date_shared: "June 8, 2021",
         tags: ["gaming-news", "gaming-journalism"],
