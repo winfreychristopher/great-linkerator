@@ -10,6 +10,7 @@ const SearchBar = ({ setResults }) => {
 
   const handleTextChange = (event) => {
     setText(event.target.value);
+    setUrlText(event.target.value)
   };
   async function handleSubmit(event) {
     event.preventDefault();
