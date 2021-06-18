@@ -18,6 +18,8 @@
 }
 .search-title {
   justify-self: end;
+  font-family: "Orbitron";
+  letter-spacing: 1px;
 }
 
 .search-bar {
