@@ -4,7 +4,7 @@ import { fetchLinksByTag, fetchLinksByUrl } from "../api";
 
 import "./SearchBar.css";
 
-const SearchBar = ({ setResults }) => {
+const SearchBar = ({ results, setResults }) => {
   const [text, setText] = useState("");
   const [urlText, setUrlText] = useState("");
 
@@ -32,6 +32,12 @@ const SearchBar = ({ setResults }) => {
     setResults([]);
   }
 
+  async function handlePopularity() {
+    const urlCounter = [...results].sort(function (a, b) {
+      return parseInt(b.count) - parseInt(a.count);
+    });
+    setResults(urlCounter);
+  }
   return (
     <>
       <div id="search-container">
@@ -50,6 +56,7 @@ const SearchBar = ({ setResults }) => {
           <button className="reset-btn" type="submit" onClick={handleReset}>
             RESET
           </button>
+          <button className="search-btn" type="submit" onClick={handlePopularity}>Search By Popularity</button>
         </form>
       </div>
     </>

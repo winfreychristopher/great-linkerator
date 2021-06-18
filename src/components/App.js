@@ -36,7 +36,7 @@ const App = () => {
           <h1 className="title">The Great Linkerator</h1>
         </div>
         <h2>{message}</h2>
-        <SearchBar setResults={setResults} />
+        <SearchBar results={results} setResults={setResults} />
         <SearchResults results={results} />
       </div>
       <div className="modal-container">
