@@ -10,27 +10,26 @@ const SearchBar = ({ setResults }) => {
 
   const handleTextChange = (event) => {
     setText(event.target.value);
-    setUrlText(event.target.value)
+    setUrlText(event.target.value);
   };
   async function handleSubmit(event) {
     event.preventDefault();
-    
+
     const links = await fetchLinksByTag(text);
     const urls = await fetchLinksByUrl(urlText);
 
     if (urls.length > 0) {
-      setResults(urls)
+      setResults(urls);
     } else if (links.length > 0) {
       setResults(links);
     } else {
-      return alert("0 Results Found")
+      return alert("0 Results Found");
     }
-    
   }
 
   async function handleReset(event) {
-    event.preventDefault()
-    setResults([])
+    event.preventDefault();
+    setResults([]);
   }
 
   return (
@@ -48,7 +47,7 @@ const SearchBar = ({ setResults }) => {
           <button className="search-btn" type="submit">
             Search
           </button>
-          <button className="search-btn" type="submit" onClick={handleReset}>
+          <button className="reset-btn" type="submit" onClick={handleReset}>
             RESET
           </button>
         </form>
