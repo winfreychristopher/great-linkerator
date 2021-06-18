@@ -11,20 +11,25 @@ const SearchBar = ({ setResults }) => {
   const handleTextChange = (event) => {
     setText(event.target.value);
   };
-  const handleTextChange2 = (event) => {
-    setUrlText(event.target.value);
-  };
-
   async function handleSubmit(event) {
     event.preventDefault();
+    
     const links = await fetchLinksByTag(text);
-    setResults(links);
+    const urls = await fetchLinksByUrl(urlText);
+
+    if (urls.length > 0) {
+      setResults(urls)
+    } else if (links.length > 0) {
+      setResults(links);
+    } else {
+      return alert("0 Results Found")
+    }
+    
   }
 
-  async function handleSubmit2(event) {
-    event.preventDefault();
-    const urls = await fetchLinksByUrl(urlText);
-    setResults(urls);
+  async function handleReset(event) {
+    event.preventDefault()
+    setResults([])
   }
 
   return (
@@ -42,20 +47,8 @@ const SearchBar = ({ setResults }) => {
           <button className="search-btn" type="submit">
             Search
           </button>
-        </form>
-      </div>
-      <div id="search-container">
-        <h3 className="search-title">Look up Urls here...</h3>
-        <form className="search-bar" onSubmit={handleSubmit2}>
-          <input
-            id="search"
-            type="text"
-            placeholder="Search Urls.."
-            value={urlText}
-            onChange={handleTextChange2}
-          />
-          <button className="search-btn" type="submit">
-            Search
+          <button className="search-btn" type="submit" onClick={handleReset}>
+            RESET
           </button>
         </form>
       </div>

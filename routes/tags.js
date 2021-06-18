@@ -13,7 +13,7 @@ tagsRouter.get("/:tagName/links", async (req, res, next) => {
 
   try {
     const links = await getLinksByTagName(tagName);
-    console.log(links, "THIS IS LINKS");
+    console.log(links, "THIS IS TAG LINKS");
     res.send(links);
   } catch (error) {
     next(error);
