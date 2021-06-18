@@ -1,3 +1,4 @@
+import React from "react"
 const LinkCard = ({ url, date_shared, click_count, comment, tags = [] }) => {
     return (
       <div className="link-card">

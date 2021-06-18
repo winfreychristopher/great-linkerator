@@ -22,6 +22,16 @@ export async function fetchLinksByTag(tag) {
   }
 }
 
+export async function fetchLinksByUrl() {
+  try {
+    const { data } = await axios.get(`/api/links`);
+    console.log(data, "THIS IS Links_Url");
+    return data.url;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function updateClicker(id) {
   try {
     return await axios.patch(`/api/links/${id}/clicks`,
