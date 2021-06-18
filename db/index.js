@@ -1,11 +1,8 @@
-// Connect to DB
 const { Client } = require("pg");
 const DB_NAME = "localhost:5432/linkerator-dev";
 const DB_URL = process.env.DATABASE_URL || `postgres://${DB_NAME}`;
 const client = new Client(DB_URL);
 
-// database methods
-//links
 async function createLinks({
   url,
   comment,
@@ -96,7 +93,6 @@ async function getLinksByUrl(url) {
   }
 }
 
-//tags
 async function getLinksByTagName(tagName) {
   try {
     const { rows: links } = await client.query(
@@ -116,7 +112,6 @@ async function getLinksByTagName(tagName) {
   }
 }
 
-//clickcount
 const updateClickCount = async (linkId) => {
   try {
     const { rows } = await client.query(
@@ -133,12 +128,10 @@ const updateClickCount = async (linkId) => {
   }
 };
 
-//tags
 async function createTags(tagsList) {
   if (tagsList.length === 0) {
     return;
   }
-  console.log(tagsList, "CREATE TAGS");
   const insertValues = tagsList.map((_, index) => `$${index + 1}`).join("), (");
   const selectValues = tagsList.map((_, index) => `$${index + 1}`).join(", ");
   try {
@@ -160,7 +153,6 @@ async function createTags(tagsList) {
   }
 }
 
-//links_Tags
 async function createLinkTags(linkId, tagId) {
   try {
     await client.query(
@@ -204,8 +196,6 @@ async function getAllLinks() {
   }
 }
 
-//tags
-
 async function getTagsById(id) {
   try {
     const {
@@ -221,7 +211,6 @@ async function getTagsById(id) {
   }
 }
 
-// export
 module.exports = {
   client,
   createLinks,

@@ -20,7 +20,6 @@ const SearchBar = ({ results, setResults }) => {
 
     if (urls.length > 0) {
       setResults(urls);
-      console.log(urls.id);
     } else if (links.length > 0) {
       setResults(links);
     } else {

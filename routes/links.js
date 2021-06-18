@@ -37,9 +37,6 @@ linksRouter.post("/", async (req, res, next) => {
     }
   });
 
-
-//update links
-
 linksRouter.patch("/:linkId", async (req, res, next) => {
     const { url, comment, tags = [] } = req.body;
     const { id } = req.params;
@@ -69,8 +66,6 @@ linksRouter.patch("/:linkId", async (req, res, next) => {
     }
   });
 
-//update clicks
-// need to target the id of the link to update the clicks
 linksRouter.patch("/:id/clicks", async (req, res, next) => {
   const {id} = req.params;
 
