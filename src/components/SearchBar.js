@@ -58,7 +58,7 @@ const SearchBar = ({ results, setResults }) => {
           <button className="search-btn" type="submit">
             Search
           </button>
-          <button className="search-btn" type="submit" onClick={handleReset}>
+          <button className="reset-btn" type="submit" onClick={handleReset}>
             RESET
           </button>
           <button

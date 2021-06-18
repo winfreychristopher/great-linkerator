@@ -18,6 +18,8 @@
 }
 .search-title {
   justify-self: end;
+  font-family: "Orbitron";
+  letter-spacing: 1px;
 }
 
 .search-bar {
@@ -29,12 +31,25 @@
 .search-btn {
   grid-column-start: 5;
   box-sizing: border-box;
-  background-color: #d0f2f0;
-  color: #586665;
+  background-color: #e55137;
+  color: #fef3eb;
   padding: 16px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   font-family: "Exo 2";
   border-radius: 5px;
+}
+.reset-btn {
+  grid-column-start: 6;
+  box-sizing: border-box;
+  background-color: #e55137;
+  color: #fef3eb;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-family: "Exo 2";
+  border-radius: 5px;
+  margin-left: 10px;
 }
