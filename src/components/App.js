@@ -4,8 +4,7 @@ import { fetchAllLinks } from "../api";
 import SearchBar from "./SearchBar";
 import LinkModal from "./LinkModal";
 import SearchResults from "./SearchResults";
-import Links from './links'
-
+import Links from "./links";
 
 import "./index.css";
 import CreateLinks from "./addLink";
@@ -16,7 +15,6 @@ const App = () => {
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState([]);
-
 
   useEffect(() => {
     fetchAllLinks()
@@ -38,14 +36,14 @@ const App = () => {
         </div>
         <h2>{message}</h2>
         <SearchBar results={results} setResults={setResults} />
+        <div className="modal-container">
+          <button onClick={() => setIsOpen(true)}>Create Link</button>
+          <LinkModal open={isOpen} onClose={() => setIsOpen(false)}>
+            <CreateLinks />
+          </LinkModal>
+        </div>
         <SearchResults results={results} setResults={setResults} />
-      </div>
-      <div className="modal-container">
-        <button onClick={() => setIsOpen(true)}>Create Link</button>
-        <LinkModal open={isOpen} onClose={() => setIsOpen(false)}>
-          <CreateLinks />
-        </LinkModal>
-        <Links results={results} setResults={setResults}/>
+        <Links results={results} setResults={setResults} />
       </div>
     </>
   );
