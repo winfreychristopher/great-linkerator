@@ -11,12 +11,6 @@ const CreateLinks = () => {
 
     const createLinksApi = async () => {
         try {
-            console.log({
-                url: url,
-                tags: tags,
-                date_shared: date,
-                comment: comment,
-            } )
             return await axios.post("/api/links", {
                 url: url,
                 tags: [tags],

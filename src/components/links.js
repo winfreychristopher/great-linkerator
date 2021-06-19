@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { fetchAllLinks } from "../api";
+import { fetchAllLinks, fetchLinksByTag } from "../api";
 import { updateClicker } from "../api";
 
-const Links = () => {
+const Links = ({setResults}) => {
   const [links, setLinks] = useState([]);
+  
 
   useEffect(() => {
     fetchAllLinks()
@@ -14,23 +15,19 @@ const Links = () => {
         console.error(error);
       });
   }, [setLinks]);
+  
+  const handleTagClick = async (event, tagName) => {
+    event.preventDefault();
+    const links = await fetchLinksByTag(tagName)
+    setResults(links);
+  }
 
   return (
     <>
       <div id="link-container">
         {links.map((link) => (
           <div key={link.id}>
-            <div>{createLinkHTML(link)}</div>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-};
-
-const createLinkHTML = (link) => {
-  return (
-    <div className="link-card">
+            <div>{<div className="link-card">
       <div>
         <b>Url:</b>
         <a
@@ -44,11 +41,9 @@ const createLinkHTML = (link) => {
         </a>
       </div>
       <div>
-        <b>Tags:</b>{" "}
+        <b>Tags:</b>
         {link.tags.map(({ id, name }) => (
-          <a href="true" key={id} onClick={(event) => {
-            event.preventDefault();
-          }}>
+          <a href="true" key={id} onClick={(event) => {event.preventDefault(); handleTagClick(event, name)}}>
             {name}
           </a>
         ))}
@@ -62,7 +57,11 @@ const createLinkHTML = (link) => {
       <div>
         <b>Comments</b> <p>{link.comment}</p>
       </div>
-    </div>
+    </div>}</div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

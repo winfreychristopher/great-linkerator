@@ -29,14 +29,19 @@ const SearchBar = ({ results, setResults }) => {
 
   async function handleReset(event) {
     event.preventDefault();
+    setText("")
+    setUrlText("")
     setResults([]);
   }
 
-  async function handlePopularity() {
-    const urlCounter = [...results].sort(function (a, b) {
-      return parseInt(b.count) - parseInt(a.count);
-    });
-    setResults(urlCounter);
+  async function handlePopularity(event) {
+    event.preventDefault();
+    if (results) {
+      const urlCounter = [...results].sort(function (a, b) {
+        return parseInt(b.click_count) - parseInt(a.click_count);
+      });
+      setResults(urlCounter);
+    }
   }
   return (
     <>
@@ -56,7 +61,13 @@ const SearchBar = ({ results, setResults }) => {
           <button className="reset-btn" type="submit" onClick={handleReset}>
             RESET
           </button>
-          <button className="search-btn" type="submit" onClick={handlePopularity}>Search By Popularity</button>
+          <button
+            className="search-btn"
+            type="submit"
+            onClick={handlePopularity}
+          >
+            Sort By Popularity
+          </button>
         </form>
       </div>
     </>

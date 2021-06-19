@@ -1,22 +1,18 @@
-// code to build and initialize DB goes here
 const {
   client,
   createLinks,
-  // other db methods
 } = require("./index");
 
 async function buildTables() {
   try {
     client.connect();
 
-    // drop tables in correct order
     await client.query(`
       DROP TABLE IF EXISTS link_tags;
       DROP TABLE IF EXISTS tags;
       DROP TABLE IF EXISTS links;
     `);
 
-    // build tables in correct order
     await client.query(`
       CREATE TABLE links(
         id SERIAL PRIMARY KEY,
@@ -44,7 +40,6 @@ async function buildTables() {
 async function populateInitialData() {
   console.log("Starting To Populate Data...");
   try {
-    // create useful starting data
     const linksToCreate = [
       {
         url: "https://www.google.com/",
