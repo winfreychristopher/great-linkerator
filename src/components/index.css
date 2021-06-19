@@ -24,7 +24,21 @@ body {
   color: white;
   font-family: "Exo 2";
 }
-
+.modal-container {
+  display: flex;
+  padding: 10px;
+}
+.modal-container > button {
+  box-sizing: border-box;
+  background-color: #e55137;
+  color: #fef3eb;
+  padding: 10px 10px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  font-family: "Exo 2";
+  border-radius: 5px;
+}
 .title-container {
   background-color: #fffaf5;
   width: 100vw;
@@ -55,13 +69,50 @@ body {
   width: max-content;
 }
 .link-modal {
-  background-color: #424a5c;
-  color: #16abe6;
+  background-color: #fffaf5;
+  color: #212021;
+  display: flex;
+  flex-direction: column;
+  justify-items: left;
+  padding: 30px;
+  height: 250px;
+  width: 500px;
 }
+
+.link-modal > button {
+  background-color: #e55137;
+  color: #fef3eb;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-family: "Exo 2";
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.create-link {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 220px;
+}
+.create-link button {
+  background-color: #e55137;
+  color: #fef3eb;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-family: "Exo 2";
+  border-radius: 5px;
+}
+
 #link-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(250px, auto);
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(150px, auto);
   gap: 15px;
   background: #212021;
   padding: 10px;
@@ -82,7 +133,7 @@ body {
   margin: 0;
 }
 .tag-list {
-  border: 2px solid black;
+  display: flex;
 }
 .Link-list {
   padding: 10px;

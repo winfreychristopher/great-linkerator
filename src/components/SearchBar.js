@@ -29,8 +29,8 @@ const SearchBar = ({ results, setResults }) => {
 
   async function handleReset(event) {
     event.preventDefault();
-    setText("")
-    setUrlText("")
+    setText("");
+    setUrlText("");
     setResults([]);
   }
 
@@ -61,11 +61,7 @@ const SearchBar = ({ results, setResults }) => {
           <button className="reset-btn" type="submit" onClick={handleReset}>
             RESET
           </button>
-          <button
-            className="search-btn"
-            type="submit"
-            onClick={handlePopularity}
-          >
+          <button className="sort-btn" type="submit" onClick={handlePopularity}>
             Sort By Popularity
           </button>
         </form>

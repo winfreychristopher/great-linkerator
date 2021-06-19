@@ -7,8 +7,8 @@ const LinkModal = ({ open, children, onClose }) => {
     <>
       <div className="background-open-modal" />
       <div className="link-modal">
-        <button onClick={onClose}>Close</button>
         {children}
+        <button onClick={onClose}>Close</button>
       </div>
     </>,
     document.getElementById("portal")
